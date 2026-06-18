@@ -76,5 +76,10 @@ export const taskService = {
         return db.auditLogs
             .filter(log => log.taskId === taskId)
             .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    }
+    },
+
+    getAllAuditLogs: async (): Promise<AuditLog[]> => {
+        const db = await storage.read();
+        return db.auditLogs.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    },
 };

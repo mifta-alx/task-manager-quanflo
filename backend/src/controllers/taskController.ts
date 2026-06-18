@@ -52,5 +52,15 @@ export const taskController = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+
+    getAllLogs: async (req: Request, res: Response, next:NextFunction) => {
+        try{
+            const allLogs = await taskService.getAllAuditLogs();
+            return Success(res, allLogs);
+        }catch(error){
+            next(error);
+        }
+    },
+
 };
