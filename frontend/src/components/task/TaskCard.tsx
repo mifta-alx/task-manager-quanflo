@@ -14,16 +14,16 @@ import {Check, Trash2} from 'lucide-react';
 import { PREDEFINED_ACTORS } from '@/constants/actors';
 import { AuditLogsModal } from '@/components/audit-logs/AuditLogsModal';
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
+import {useState} from "react";
 
 interface TaskCardProps {
     task: Task;
-    currentActor: string;
-    onActorChange: (actor: string) => void;
     onStatusChange: (id: string, nextStatus: TaskStatus, actor: string) => void;
     onDelete: (id: string) => void;
 }
 
-export function TaskCard({ task, currentActor, onActorChange, onStatusChange, onDelete }: TaskCardProps) {
+export function TaskCard({ task, onStatusChange, onDelete }: TaskCardProps) {
+    const [currentActor, setCurrentActor] = useState("");
     const getNextStatusOptions = (status: TaskStatus): { value: TaskStatus; label: string; color:string }[] => {
         switch (status) {
             case 'to_do':
@@ -58,7 +58,7 @@ export function TaskCard({ task, currentActor, onActorChange, onStatusChange, on
                 <div className="flex flex-row justify-between items-center w-full min-w-0">
                     <div className="flex flex-row gap-2 items-center flex-1 min-w-0">
                         {nextOptions.length > 0 && (
-                                <Select value={currentActor} onValueChange={onActorChange}>
+                                <Select value={currentActor} onValueChange={(value) => setCurrentActor(value)}>
                                     <SelectTrigger className="text-xs bg-white border-border rounded-sm truncate w-28 shrink" size="sm">
                                         <SelectValue placeholder="Select actor"  />
                                     </SelectTrigger>

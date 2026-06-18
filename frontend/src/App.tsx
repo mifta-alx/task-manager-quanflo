@@ -21,7 +21,6 @@ export default function App() {
     const toast = useToast();
     const [tasks, setTasks] = useState<Task[]>([]);
     const [globalLogs, setGlobalLogs] = useState<AuditLog[]>([]);
-    const [globalActor, setGlobalActor] = useState<string>('john.doe');
     const [loading, setLoading] = useState(true);
     const [deleteLoading, setDeleteLoading] = useState(false);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -144,8 +143,6 @@ export default function App() {
                                                         <TaskCard
                                                             key={task.id}
                                                             task={task}
-                                                            currentActor={globalActor}
-                                                            onActorChange={setGlobalActor}
                                                             onStatusChange={handleStatusChange}
                                                             onDelete={() => handleDeleteTask(task)}
                                                         />
