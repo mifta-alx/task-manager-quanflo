@@ -4,6 +4,18 @@
      "rootDir": "./src",
      "outDir": "./dist",
 
+    "paths": {
+      "#types/*.js": ["./src/@types/*.ts"],
+      "#config/*.js": ["./src/config/*.ts"],
+      "#database/*.js": ["./src/database/*.ts"],
+      "#middlewares/*.js": ["./src/middlewares/*.ts"],
+      "#services/*.js": ["./src/services/*.ts"],
+      "#controllers/*.js": ["./src/controllers/*.ts"],
+      "#routes/*.js": ["./src/routes/*.ts"],
+      "#validators/*.js": ["./src/validators/*.ts"],
+      "#utils/*.js": ["./src/utils/*.ts"]
+    },
+
     // Environment Settings
     "module": "NodeNext",
     "moduleResolution": "NodeNext",

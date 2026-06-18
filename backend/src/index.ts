@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import { errorHandler } from "#middlewares/errorHandler.js";
+import taskRoutes from "#routes/taskRoutes.js";
 
 const app = express();
 const PORT = 5001;
@@ -7,11 +9,10 @@ const PORT = 5001;
 app.use(cors());
 app.use(express.json());
 
-// Test Route
-app.get('/ping', (req, res) => {
-    res.json({ message: 'pong' });
-});
+app.use('/api', taskRoutes);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
-    console.log(`🚀 Backend running on http://localhost:${PORT}`);
+    console.log(`Backend running on http://localhost:${PORT}`);
 });

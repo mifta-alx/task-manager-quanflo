@@ -6,6 +6,17 @@
   "author": "",
   "type": "module",
   "main": "src/index.ts",
+  "imports": {
+    "#types/*.js": "./src/@types/*.ts",
+    "#config/*.js": "./src/config/*.ts",
+    "#database/*.js": "./src/database/*.ts",
+    "#middlewares/*.js": "./src/middlewares/*.ts",
+    "#services/*.js": "./src/services/*.ts",
+    "#controllers/*.js": "./src/controllers/*.ts",
+    "#routes/*.js": "./src/routes/*.ts",
+    "#validators/*.js": "./src/validators/*.ts",
+    "#utils/*.js": "./src/utils/*.ts"
+  },
   "scripts": {
     "dev": "node --import ts-node/esm src/index.ts"
   },
